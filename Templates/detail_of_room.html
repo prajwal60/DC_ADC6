@@ -1,0 +1,63 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>search</title>
+
+</head>
+<body>
+
+      <h1>Available Rooms:</h1>
+      {%if source%}
+   {% for x in detail %}
+    <form  method="POST">
+        {% csrf_token %}
+              <div class="item">
+                <div class="item-entry">
+                    <img src="{{x.file.url}}" alt="Image" class="img-fluid">
+                  <h2 class="item-title"><a href="#">{{x.location}}</a></h2>
+                  <div class="star-rating">
+                    <h2 class="item-title"><a href="#">{{x.desc}}</a></h2>
+                  <strong class="item-price">${{x.price}}</strong>
+                   <a href="/delete/{{x.pk}}">Delete</a><br>
+                  <a href="/update_form/{{x.pk}}" role="button">Update</a>
+                  </div>
+                </div>
+              </div>
+
+            {% empty %}
+                There are no Rooms available.
+        {% endfor %}
+        {% else %}
+
+        {% for x in detail %}
+            <form  method="POST">
+        {% csrf_token %}
+              <div class="item">
+                <div class="item-entry">
+                    <img src="{{x.file.url}}" alt="Image" class="img-fluid">
+                  <h2 class="item-title"><a href="#">{{x.location}}</a></h2>
+                  <div class="star-rating">
+                    <h2 class="item-title"><a href="#">{{x.desc}}</a></h2>
+                  <strong class="item-price">${{x.price}}</strong>
+                   <a href="/delete/{{x.pk}}">Delete</a><br>
+                  <a href="/update_form/{{x.pk}}" role="button">Update</a>
+                  </div>
+                </div>
+              </div>
+
+            {% empty %}
+                There are no Rooms available.
+        {% endfor %}
+        {% endif %}
+
+<!--              <a href="/delete/{{item.pk}}" role="button">Delete</a><br>
+                  <a href="/update_form/{{item.pk}}" role="button">Update</a> -->
+    </form>
+</body>
+</html>
