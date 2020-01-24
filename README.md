@@ -1,1 +1,1 @@
-# DC_ADC6
+# DC_ADC6 Prajwal Ghimire and Gaman Aryal
